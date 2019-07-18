@@ -13,10 +13,15 @@ Its an Simple but Powerfull Script.
 [B] Whatevery NPC you want at every Point you want
 
 #Fully customizable to create your own Dealer
+
 #Works perfectly with the buglary script so you can sell the items you robbed
+
 #Clean Code
+
 #Every important Code is marked with an information what is does
+
 #Doesnt Need a Serverrestart to start the script
+
 #No SQl File (I hate this xD)
 
 Requirements:
