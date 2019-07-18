@@ -10,7 +10,9 @@ Its an Simple but Powerfull Script.
 
 #It have an own NpcSpawn Script inside where you can spawn 
 [A] The Dealer
+
 [B] Whatevery NPC you want at every Point you want
+
 
 #Fully customizable to create your own Dealer
 
