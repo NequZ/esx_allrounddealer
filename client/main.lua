@@ -66,7 +66,7 @@ function OpenDrugShop()
 
 		if price and v.count > 0 then
 			table.insert(elements, {
-				label = ('%s - <span style="color:green;">%s</span>'):format(v.label, _U('dealer_item', ESX.Math.GroupDigits(price))),
+				label = ('%s - <span style="color:red;">%s</span>'):format(v.label, _U('dealer_item', ESX.Math.GroupDigits(price))),
 				name = v.name,
 				price = price,
 
@@ -81,7 +81,7 @@ function OpenDrugShop()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'drug_shop', {
 		title    = _U('dealer_title'),
-		align    = 'top-left',
+		align    = 'top-right',
 		elements = elements
 	}, function(data, menu)
 		TriggerServerEvent('esx_oranges:sellOrange', data.current.name, data.current.value)

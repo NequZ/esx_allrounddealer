@@ -1,5 +1,5 @@
 local koordinaten = {
-    {1290.78, 3627.19, 32.04,"Drogendealer",400.77,0x23B88069,"g_m_y_ballasout_01"}
+    {-66.784, -109.98, 0,"Drogendealer",400.77,0x3fb5c3d3,"a_m_m_bevhills_02"}
 }
 
 
@@ -11,8 +11,8 @@ Citizen.CreateThread(function()
         Wait(1)
       end
   
-      RequestAnimDict("mini@strip_club@idles@bouncer@base")
-      while not HasAnimDictLoaded("mini@strip_club@idles@bouncer@base") do
+      RequestAnimDict("mp_safehouseseated@male@generic@base")
+      while not HasAnimDictLoaded("mp_safehouseseated@male@generic@base") do
         Wait(1)
       end
       ped =  CreatePed(4, v[6],v[1],v[2],v[3], 3374176, false, true)
@@ -20,6 +20,6 @@ Citizen.CreateThread(function()
       FreezeEntityPosition(ped, true)
       SetEntityInvincible(ped, true)
       SetBlockingOfNonTemporaryEvents(ped, true)
-      TaskPlayAnim(ped,"mini@strip_club@idles@bouncer@base","base", 8.0, 0.0, -1, 1, 0, 0, 0, 0)
+      TaskPlayAnim(ped,"mp_safehouseseated@male@generic@base","base", 8.0, 0.0, -1, 1, 0, 0, 0, 0)
     end
 end)

@@ -10,7 +10,7 @@ AddEventHandler('esx_oranges:sellOrange', function(itemName, amount)
 	local xItem = xPlayer.getInventoryItem(itemName)
 
 	if not price then
-		print(('esx_drugs: %s hat versucht ein Item zu verkaufen was er nicht hat'):format(xPlayer.identifier)) --Edit this. Thats show you a Notification in your console when someone try to sell  a item that he doenst have
+		print(('esx_drugs: %s sahip olmadığı bir ürünü satmaya çalıştı'):format(xPlayer.identifier)) --Edit this. Thats show you a Notification in your console when someone try to sell  a item that he doenst have
 		return
 	end
 
