@@ -45,10 +45,11 @@ Citizen.CreateThread(function()
 				Citizen.Wait(500)
 			end
 		else
-			if wasOpen then
-				wasOpen = false
-				ESX.UI.Menu.CloseAll()
-			end
+if wasOpen then
+          		 wasOpen = false
+          		 menuOpen = false
+         		  ESX.UI.Menu.CloseAll()
+      end
 
 		
 			Citizen.Wait(500)
