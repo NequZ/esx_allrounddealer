@@ -34,14 +34,6 @@ end)
 
 
 
-AddEventHandler('esx:playerDropped', function(playerID, reason)
-	CancelProcessing(playerID)
-end)
-
-RegisterServerEvent('esx:onPlayerDeath')
-AddEventHandler('esx:onPlayerDeath', function(data)
-	CancelProcessing(source)
-end)
 
 
 
