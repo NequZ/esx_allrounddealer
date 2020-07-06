@@ -39,7 +39,6 @@ Citizen.CreateThread(function()
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 		if GetDistanceBetweenCoords(coords, Config.CircleZones.Allrounddealer.coords, true) < 0.5 then
-			ped = GetPlayerPed()
 			TriggerServerEvent('esx_allrounddealer:fetch', playerPed)
 			if not menuOpen then
 				ESX.ShowHelpNotification(_U('dealer_notification'))
