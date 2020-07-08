@@ -13,6 +13,7 @@ Keys = {
 ESX = nil
 local menuOpen = false
 local wasOpen = false
+local items = {}
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -27,16 +28,20 @@ Citizen.CreateThread(function()
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
+RegisterNetEvent('esx_allrounddealer:fetchitems')
+AddEventHandler('esx_allrounddealer:fetchitems', function(fetchedItems)
+	items = fetchedItems
+end)
+
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
-
 		if GetDistanceBetweenCoords(coords, Config.CircleZones.Allrounddealer.coords, true) < 0.5 then
+			TriggerServerEvent('esx_allrounddealer:fetch', playerPed)
 			if not menuOpen then
 				ESX.ShowHelpNotification(_U('dealer_notification'))
-
 				if IsControlJustReleased(0, Keys['E']) then --Change this when you want another Key to get into the menu
 					wasOpen = true
 					OpenDrugShop()
@@ -45,13 +50,11 @@ Citizen.CreateThread(function()
 				Citizen.Wait(500)
 			end
 		else
-if wasOpen then
-          		 wasOpen = false
-          		 menuOpen = false
-         		  ESX.UI.Menu.CloseAll()
-      end
-
-		
+		if wasOpen then
+          		wasOpen = false
+          		menuOpen = false
+         		ESX.UI.Menu.CloseAll()
+      	end
 			Citizen.Wait(500)
 		end
 	end
@@ -61,16 +64,22 @@ function OpenDrugShop()
 	ESX.UI.Menu.CloseAll()
 	local elements = {}
 	menuOpen = true
-
 	for k, v in pairs(ESX.GetPlayerData().inventory) do
-		local price = Config.Allrounditems[v.name]
-
+		local price = nil
+		if Config.useSql then
+			for x, y in pairs(items) do
+				if(v.name == y.name) then
+					price = y.price
+				end
+			end
+		else
+			price = Config.Allrounditems[v.name]
+		end
 		if price and v.count > 0 then
 			table.insert(elements, {
 				label = ('%s - <span style="color:green;">%s</span>'):format(v.label, _U('dealer_item', ESX.Math.GroupDigits(price))),
 				name = v.name,
 				price = price,
-
 				-- menu properties
 				type = 'slider',
 				value = 1,
@@ -116,7 +125,6 @@ end
 
 Citizen.CreateThread(function()
 	for k,zone in pairs(Config.CircleZones) do
-
 		CreateBlipCircle(zone.coords, zone.name, zone.radius, zone.color, zone.sprite)
 	end
 end)

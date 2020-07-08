@@ -6,6 +6,7 @@ Config.Allrounditems = {
 	shirt = 91,  --Just an example for implement the items from the buglary Script
 }
 
+Config.useSql = false
 
 Config.BlackMoney = false -- False = Normal Money | True = BlackMoney
 
