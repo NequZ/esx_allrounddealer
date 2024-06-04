@@ -24,8 +24,6 @@ Its an Simple but Powerfull Script.
 
 #Doesnt Need a Serverrestart to start the script
 
-#No SQl File (I hate this xD)
-
 Requirements:
 Nothing!
 
